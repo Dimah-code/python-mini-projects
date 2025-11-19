@@ -1,10 +1,17 @@
+"""
+This file for finding number with binary search
+"""
+
+numbers = []
+length_numbers = int(input("how many number do you want to enter "))
+for i in range(length_numbers):
+    temp = int(input(f"Enter number {i+1} : "))
+    numbers.append(temp)
 n = int(input("enter a number you want to search: "))
-numbers = [1,3,5,7,9,10,13,15,17,19]
 
 Min = 0
 Max = len(numbers) - 1
 found = -1
-print(Max,Min)
 
 while Min <= Max:
     Mid = (Min + Max) // 2
