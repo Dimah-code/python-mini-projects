@@ -3,63 +3,69 @@ rock paper scissors game let's play
 """
 
 import random
+import time
+
+def menu():
+    print("1. Rock")
+    print("2. Paper")
+    print("3. Scissors")
+
+def validation(answer: int) -> bool:
+    valid_answers = [1, 2, 3, 0]
+    if answer in valid_answers:
+        return True
+    else:
+        return False
+
+options_dict = {1: "Rock", 2: "Paper", 3: "Scissors"}
+
+ROCK = 1
+PAPER = 2
+SCISSORS = 3
 
 end = True
 player_point = 0
 computer_point = 0
-while end:
-    print("AI =", computer_point, "YOU =", player_point)
-    answer = input("rock,paper and scissors?choose on of them and type: \n")
 
-    if answer == "scissors":
-        pass
-    elif answer == "paper":
-        pass
-    elif answer == "rock":
-        pass
-    else:
-        print("you did't choose invalid answer")
+while end:
+    print("\t Computer:", computer_point, "You:", player_point)
+    menu()
+    try:
+        player = int(input("Choose your option: \n"))
+    except Exception as e:
+        print("Enter a valid number 1, 2, 3")
+        time.sleep(1)
         continue
 
-    ai = random.randint(1, 3)
-    if ai == 1:
-        computer_answer = "paper"
-    elif ai == 2:
-        computer_answer = "scissors"
-    else:
-        computer_answer = "rock"
+    if not validation(player):
+        print("You choose wrong option! Try again")
+        time.sleep(1)
 
-    if computer_answer == answer:
-        print("unlucky !!!!!!!it's DRAW!!!!!!!")
-        print("computer answer= ", computer_answer)
-    elif computer_answer == "paper" and answer == "rock":
-        print("!!!!!!!you LOSE!!!!!!!")
+    computer = random.randint(1, 3)
+
+    if computer == player:
+        print("Woah! This round of play was tied!")
+        print("Computer answer:", options_dict[computer])
+    elif (
+        (computer == ROCK and player == SCISSORS) or (computer == PAPER and player == ROCK) or
+        (computer == SCISSORS and player == PAPER)
+    ):
+        print("You LOST! Did you lose to a computer?")
         computer_point += 1
-        print("computer answer= ", computer_answer)
-    elif computer_answer == "paper" and answer == "scissors":
-        print("!!!!!!!you WON!!!!!!!")
+        print("computer answer:", options_dict[computer])
+    elif (
+        (player == ROCK and computer == SCISSORS) or (player == PAPER and computer == ROCK)
+        or (player == SCISSORS and computer == PAPER)
+    ):
+        print("You WON! Well Played!")
         player_point += 1
-        print("computer answer= ", computer_answer)
-    elif computer_answer == "scissors" and answer == "paper":
-        print("!!!!!!!you LOSE!!!!!!!")
-        computer_point += 1
-        print("computer answer= ", computer_answer)
-    elif computer_answer == "scissors" and answer == "rock":
-        print("!!!!!!!you WON!!!!!!!")
-        player_point += 1
-        print("computer answer= ", computer_answer)
-    elif computer_answer == "rock" and answer == "scissors":
-        print("!!!!!!!you LOSE!!!!!!!")
-        computer_point += 1
-        print("computer answer= ", computer_answer)
-    elif computer_answer == "rock" and answer == "paper":
-        print("!!!!!!!you WIN!!!!!!!")
-        player_point += 1
-        print("computer answer= ", computer_answer)
+        print("computer answer:", options_dict[computer])
+
     if computer_point == 3:
-        print("!!!!!!the computer is the finalist WINNER!!!!!!!")
+        print("*"*30, "Computer WON! embarrassing", "*"*30)
         end = False
     elif player_point == 3:
-        print("!!!!!!!you are the finalist WINNER!!!!!!!")
+        print("*"*30, "You WON! Congrats", "*"*30)
         end = False
-print("!!!!!!! AI =", computer_point, "YOU =", player_point, "!!!!!!!")
+
+print("\t Computer:", computer_point, "You:", player_point)
