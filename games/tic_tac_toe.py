@@ -24,6 +24,20 @@ def show_board():
 
 def computer_move():
     empty_blocks = [i for i in range(9) if board[i] == " "]
+
+    for i in empty_blocks:
+        board[i] = "O"
+        if check_win("O"):
+            return
+        board[i] = " "
+
+    for i in empty_blocks:
+        board[i] = "X"
+        if check_win("X"):
+            board[i] = "O" 
+            return
+        board[i] = " "
+
     choice = random.choice(empty_blocks)
     board[choice] = "O"
 
@@ -72,4 +86,3 @@ while True:
         print("*"* 10, "YOU LOSE", "*"* 10)
         break
 
-    
