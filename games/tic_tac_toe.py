@@ -30,11 +30,13 @@ print("-"* 10, "let's play X,O", "-"* 10)
 while True:
     show_board()
     try:
-        player_move = int(input("choose one of the empty blocks by sending number 1-9\n"))-1
+        player_move = int(input("choose one of the empty blocks by sending number 1-9\n 0 => EXIT\n"))-1
     except ValueError:
         print("please enter a number between 1 & 9")
         continue
-    if player_move > 8 or player_move < 0:
+    if player_move == -1:
+        break
+    if player_move > 8 or player_move < -1:
         print("please enter a number between 1 & 9")
         continue
     
