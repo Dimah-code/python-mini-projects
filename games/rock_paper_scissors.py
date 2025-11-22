@@ -10,6 +10,7 @@ def menu():
     print("1. Rock")
     print("2. Paper")
     print("3. Scissors")
+    print("0. Exit")
 
 
 def validation(answer: int) -> bool:
@@ -43,7 +44,8 @@ while end:
     if not validation(player):
         print("You choose wrong option! Try again")
         time.sleep(1)
-
+    if player == 0 :
+        break
     computer = random.randint(1, 3)
 
     if computer == player:
@@ -72,5 +74,7 @@ while end:
     elif player_point == 3:
         print("*" * 30, "You WON! Congrats", "*" * 30)
         end = False
-
-print("\t Computer:", computer_point, "You:", player_point)
+if player == 0:
+    print("*" * 30,"GOOD BYE","*" * 30)
+else:
+    print("\t Computer:", computer_point, "You:", player_point)
