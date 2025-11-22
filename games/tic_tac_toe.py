@@ -5,6 +5,15 @@ import random
 
 board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 win =[(0,1,2), (3,4,5), (6,7,8), (0,3,6), (1,4,7), (2,5,8),(0,4,8), (2,4,6)]
+def number_hint():
+    print("//game key hint")
+    print(" "* 10, "1 | 2 | 3")
+    print(" "* 10, "-"*9)
+    print(" "* 10, "4 | 5 | 6")
+    print(" "* 10, "-"*9)
+    print(" "* 10, "6 | 7 | 8")
+    print()
+    print("-"* 36)
 
 def show_board():
     print(" "* 10, board[0], "|", board[1], "|", board[2])
@@ -25,6 +34,7 @@ def check_win(symbol):
     
     return False
 
+number_hint()
 print("-"* 10, "let's play X,O", "-"* 10)
 
 while True:
