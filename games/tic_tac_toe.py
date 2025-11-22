@@ -11,7 +11,7 @@ def number_hint():
     print(" "* 10, "-"*9)
     print(" "* 10, "4 | 5 | 6")
     print(" "* 10, "-"*9)
-    print(" "* 10, "6 | 7 | 8")
+    print(" "* 10, "7 | 8 | 9")
     print()
     print("-"* 36)
 
