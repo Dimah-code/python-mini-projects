@@ -4,6 +4,7 @@ rock paper scissors game let's play
 
 import random
 import time
+import os
 
 
 def menu():
@@ -11,6 +12,12 @@ def menu():
     print("2. Paper")
     print("3. Scissors")
     print("0. Exit")
+    
+def clear():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
 
 def validation(answer: int) -> bool:
@@ -32,6 +39,7 @@ player_point = 0
 computer_point = 0
 
 while end:
+    clear()
     print("\t Computer:", computer_point, "You:", player_point)
     menu()
     try:
@@ -51,6 +59,7 @@ while end:
     if computer == player:
         print("Woah! This round of play was tied!")
         print("Computer answer:", options_dict[computer])
+        time.sleep(2)
     elif (
         (computer == ROCK and player == SCISSORS)
         or (computer == PAPER and player == ROCK)
@@ -59,6 +68,7 @@ while end:
         print("You LOST! Did you lose to a computer?")
         computer_point += 1
         print("computer answer:", options_dict[computer])
+        time.sleep(2)
     elif (
         (player == ROCK and computer == SCISSORS)
         or (player == PAPER and computer == ROCK)
@@ -67,6 +77,7 @@ while end:
         print("You WON! Well Played!")
         player_point += 1
         print("computer answer:", options_dict[computer])
+        time.sleep(2)
 
     if computer_point == 3:
         print("*" * 30, "Computer WON! embarrassing", "*" * 30)
