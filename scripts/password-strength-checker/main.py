@@ -1,4 +1,4 @@
-from password_strength_checker import PasswordStrengthChecker
+from strength_checker import PasswordStrengthChecker
 
 
 def title():
