@@ -6,20 +6,29 @@ import random
 
 
 NUM_DIGITS = 3
-MAX_GUESSES = 10
+MAX_GUESSES = 20
+
+
+def title():
+    """
+    Navbar of game
+    """
+    print(
+        f"\nI'm thinking of a {NUM_DIGITS} digit number \
+          with no repeated digits "
+    )
+    print("=" * 30 + " RULES " + "=" * 30)
+    print("\tWhen I say: \t That means:")
+    print("\tPico \t\t One digit is correct but in the wrong position")
+    print("\tFermi \t\t One digit is correct and in the right position")
+    print("\tBagels \t\t No digit is correct")
 
 
 def main():
-    print(
-        f"I am thinking of a {NUM_DIGITS} digit number \
-          with no repeated digits "
-    )
-
-    print("\tWhen I say: \t|\t That means:")
-    print("\tPico \t|\t One digit is correct but in the wrong position")
-    print("\tFermi \t|\t One digit is correct and in the right position")
-    print("\tBagels \t|\t No digit is correct")
-
+    """
+    Main loop of bagels game
+    """
+    title()
     while True:
         secret_number = make_secret_number()
 
@@ -28,22 +37,7 @@ def main():
 
         guess_count = 1
 
-        while guess_count <= MAX_GUESSES:
-            guess = ""
-            while len(guess) != NUM_DIGITS or not guess.isdecimal():
-                print(f"Guess #{guess_count}: ")
-                guess = input(">")
-
-                clues = get_clues(guess, secret_number)
-                print(clues)
-
-                guess_count += 1
-
-            if guess == secret_number:
-                break
-            if guess_count > MAX_GUESSES:
-                print("You ran out of guesses!")
-                print(f"The answer was {secret_number}")
+        guess_loop(secret_number, guess_count)
 
         print("Do you want to play again? (y/n) ")
 
@@ -96,6 +90,32 @@ def make_secret_number() -> str:
     for i in range(NUM_DIGITS):
         secret_number += str(numbers[i])
     return secret_number
+
+
+def guess_loop(secret_number: str, guess_count: int):
+    while guess_count <= MAX_GUESSES:
+
+        guess = guess_validator(guess_count)
+
+        clues = get_clues(guess, secret_number)
+        print(clues)
+
+        guess_count += 1
+
+        if guess == secret_number:
+            break
+        if guess_count > MAX_GUESSES:
+            print("You ran out of guesses!")
+            print(f"The answer was {secret_number}")
+
+
+def guess_validator(guess_count: int) -> str:
+    guess = ""
+
+    while len(guess) != NUM_DIGITS or not guess.isdecimal():
+        print(f"Guess #{guess_count}: ")
+        guess = input("> ")
+    return guess
 
 
 if __name__ == "__main__":
