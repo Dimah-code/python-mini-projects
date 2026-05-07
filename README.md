@@ -20,7 +20,7 @@ A curated collection of beginner to intermediate Python mini-projects designed t
 
 ### Step 1: Clone Repository
 ```bash
-git clone https://github.com/Dimah-code/python-mini-projects.git
+git clone https://github.com/geekmanesh/python-mini-projects.git
 cd python-mini-projects
 ````
 
@@ -66,7 +66,7 @@ We love contributions! See <a href="CONTRIBUTING.md">here</a> for more informati
 ## 👥 Authors & Contributors
 
 ### Core Team
-- **Dimah** ([@Dimah-code](https://github.com/Dimah-code)) - Project Maintainer
+- **Geekmanesh** ([@geekmanesh](https://github.com/geekmanesh)) - Project Maintainer
 - **Hesam** ([@0protegosec0](https://github.com/0protegosec0)) - Original Fork & Contributor
 
 ## 📄 <a id="license"></a>License
